@@ -23,7 +23,7 @@ export const SignUp: React.FC<{ navigation: StackNavigationProp<any> }> = ({navi
                     <Text style={style.text}>Already have an account? <Image source={require('../../assets/Vector.png')} />
                     </Text>
                     </TouchableOpacity>
-                    <Button title="Sign Up" onPress={() => navigation.navigate('MainPage')}/>
+                    <Button title="Sign Up" onPress={() => navigation.navigate('Categories')}/>
                 </View>
                 <View style={{ flex: 2, justifyContent: 'flex-end' }}>
                     <Footer title='Or sign up with social account'/>

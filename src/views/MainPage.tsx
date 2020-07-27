@@ -1,9 +1,14 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BottomNavigationBar } from '../components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export const MainPage: React.FC = () => {
+const Stack = createStackNavigator();
+
+export const MainPage: React.FC<{ navigation: StackNavigationProp<any> }> = ({navigation}) => {
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 1 }}>
@@ -30,7 +35,9 @@ export const MainPage: React.FC = () => {
                 <View style={{ flex: 3, flexDirection: 'row' }}>
                     <View style={{ flexDirection: 'column', width: 205 }}>
                         <View style={{ backgroundColor: '#1E1F28', height: 200, justifyContent: 'center'}}>
+                            <TouchableOpacity  onPress={() => navigation.navigate('Sales')}>
                             <Text style={style.textSummerSale}>Summer sale</Text>
+                            </TouchableOpacity>
                         </View>
                         <View style={{ height: 210 }}>
                             <ImageBackground

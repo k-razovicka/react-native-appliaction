@@ -1,49 +1,41 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { View, ScrollView, StyleSheet, StatusBar, Text, Image, Alert, TouchableOpacity } from 'react-native';
+import { BottomNavigationBar } from '../components';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+interface CategoryProps {
+    title: string;
+}
+
+const categoryImage = {
+    new: require('../../assets/categoryNew.png'),
+    clothes: require('../../assets/categoryClothes.png'),
+    shoes: require('../../assets/categoryShoes.png'),
+    accessories: require('../../assets/categoryAccessories.png')
+}
+
+const Category: React.FC<CategoryProps> = ({ title }) => {
+
+    return (
+        <View style={style.textContainer} >
+            <Text style={style.categoryTextButton}>{title}</Text>
+        </View>
+    )
+}
 
 
-// const titles = [
-//     {
-//         title: 'New',
-//         img: require('../../assets/Vector.png'),
-//     },
-//     {
-//         title: 'Clothes',
-//         img: require('../../assets/Google.png'),
-//     },
-//     {
-//         title: 'Shoes',
-//         img: require('../../assets/Facebook.png'),
-//     },
-//     {
-//         title: 'Accessories',
-//         img: require('../../assets/Search.png'),
-//     }
-// ]
+const Stack = createStackNavigator();
 
-// interface CategoryProps {
-//     title: string;
-//     img: string;
-// }
-
-// const Category: React.FC<CategoryProps> = ({ title, img }) => {
-
-//     return (
-//         <View >
-//             <Text>{title}</Text>
-//             <Image source={img}/>
-//         </View>
-//     )
-// }
-
-
-export const SummerSales: React.FC = () => {
-    // const [isClicked, setClicked] = useState<boolean>(false);
+export const SummerSales: React.FC<{ navigation: StackNavigationProp<any> }> = ({navigation}) => {
     return (
         <>
             {/* StatusBar uz ios normali nestrada */}
             <StatusBar barStyle="light-content" />
             <ScrollView contentContainerStyle={style.container}>
+                
+                {/* Šī vietā laikam būtu header navigation */}
                 <View style={style.targetCategory}>
                     <TouchableOpacity onPress={() => Alert.alert('Women')}>
                         <View style={style.currentCategory}>
@@ -57,110 +49,32 @@ export const SummerSales: React.FC = () => {
                         <Text style={style.text}>Kids</Text>
                     </TouchableOpacity>
                 </View>
+
                 <View style={style.contentContainer}>
-                    <View style={style.salesButton}>
-                        <Text style={style.salesButtonText}>SUMMER SALES</Text>
-                        <Text style={style.salesButtonSmallText}>Up to 50% off</Text>
+                <View style={style.salesButton}>
+                    <Text style={style.salesButtonText}>SUMMER SALES</Text>
+                    <Text style={style.salesButtonSmallText}>Up to 50% off</Text>
+                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('Categories')}>
+                    <View style={style.categoryTextButtonContainer}>
+                        <Category title="New" />
+                           <Image style={style.categoryImageButtonContainer} source={categoryImage.new} /> 
                     </View>
-                    <View>
-                    <TouchableOpacity onPress={() => Alert.alert('New Category')}>
-                        <View style={style.categoryButtonContainer} >
-                            <View style={style.categoryTextButtonContainer}>
-                                <Text style={style.categoryTextButton}>
-                                    New
-                                </Text>
-                            </View>   
-                            <View style={style.categoryImageButtonContainer} >
-                                <Text >
-                                    <Image style={style.categoryImageButton} source={require('../../assets/categoryNew.png')} />
-                                </Text>
-                            </View>
-                        </View>
-                        </TouchableOpacity>
+                    </TouchableOpacity>
+                    <View style={style.categoryTextButtonContainer}>
+                        <Category title="Clothes" />
+                        <Image style={style.categoryImageButtonContainer}  source={categoryImage.clothes} />
                     </View>
-                    <View>
-                    <TouchableOpacity onPress={() => Alert.alert('Clothes Category')}>
-                        <View style={style.categoryButtonContainer} >
-                            <View style={style.categoryTextButtonContainer}>
-                                <Text style={style.categoryTextButton}>
-                                    Clothes
-                                </Text>
-                            </View>
-                            <View style={style.categoryImageButtonContainer} >
-                                <Text >
-                                    <Image style={style.categoryImageButton} source={require('../../assets/categoryClothes.png')} />
-                                </Text>
-                            </View>
-                        </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => Alert.alert('Shoes Category')}>
-                        <View>
-                            <View style={style.categoryButtonContainer} >
-                                <View style={style.categoryTextButtonContainer}>
-                                    <Text style={style.categoryTextButton}>
-                                        Shoes
-                                </Text>
-                                </View>
-                                <View style={style.categoryImageButtonContainer} >
-                                    <Text >
-                                        <Image style={style.categoryImageButton} source={require('../../assets/categoryShoes.png')} />
-                                    </Text>
-                                </View>
-                            </View>
-                        </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => Alert.alert('Accessories Category')}>
-                        <View>
-                            <View style={style.categoryButtonContainer} >
-                                <View style={style.categoryTextButtonContainer}>
-                                    <Text style={style.categoryTextButton}>
-                                        Accessories
-                                </Text>
-                                </View>
-                                <View style={style.categoryImageButtonContainer} >
-                                    <Text >
-                                        <Image style={style.categoryImageButton} source={require('../../assets/categoryAccessories.png')} />
-                                    </Text>
-                                </View>
-                            </View>
-                        </View>
-                        </TouchableOpacity>
+                    <View style={style.categoryTextButtonContainer}>
+                        <Category title="Shoes" />
+                        <Image style={style.categoryImageButtonContainer}  source={categoryImage.shoes} />
                     </View>
-                    <View>
-                        {/* {titles.map(title => (
-                            <Category key={title.title} title={title.title} img={title.img} />
-                        ))} */}
+                    <View style={style.categoryTextButtonContainer}>
+                        <Category title="Accessories" />
+                        <Image style={style.categoryImageButtonContainer} source={categoryImage.accessories} />
                     </View>
                 </View>
-                <View>
-                    <View style={style.bottomNavigationContainer}>
-                        <View style={style.bottomNavigationContentAlign} >
-                            <Text>
-                            </Text>
-                            <Text style={style.bottomNavigationText}>Home</Text>
-                        </View>
-                        <View style={style.bottomNavigationContentAlign}>
-                            <Text>
-                            </Text>
-                            <Text style={style.bottomNavigationText}>Shop</Text>
-                        </View>
-                        <View style={style.bottomNavigationContentAlign}>
-                            <Text>
-                            </Text>
-                            <Text style={style.bottomNavigationText}>Bag</Text>
-                        </View>
-                        <View style={style.bottomNavigationContentAlign}>
-                            <Text>
-                            </Text>
-                            <Text style={style.bottomNavigationText}>Favorites</Text>
-                        </View>
-                        <View style={style.bottomNavigationContentAlign}>
-                            <Text>
-                            </Text>
-                            <Text style={style.bottomNavigationText}>Profile</Text>
-                        </View>
-                    </View>
-                </View>
+                <BottomNavigationBar />
             </ScrollView>
 
         </>
@@ -168,31 +82,34 @@ export const SummerSales: React.FC = () => {
 }
 
 const style = StyleSheet.create({
-    container: {
+    container: { 
         flex: 1,
         backgroundColor: '#1E1F28',
-        paddingTop: 20
+        paddingTop: 80,
     },
-    text: {
+    text: { 
         color: '#F5F5F5',
         fontSize: 16,
         paddingLeft: 50,
         paddingRight: 50,
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontWeight: '600'
     },
-    targetCategory: {
+    targetCategory: { 
         flexDirection: 'row',
         justifyContent: "space-around",
     },
-    currentCategory: {
+    currentCategory: { 
         borderStyle: "solid",
         borderBottomWidth: 3,
         borderBottomColor: '#EF3651',
     },
-    contentContainer: {
-        paddingHorizontal: 16,
+    contentContainer: { 
+        flex: 1, 
+        marginLeft: 20, 
+        marginRight: 20
     },
-    salesButton: {
+    salesButton: { 
         backgroundColor: '#FF3E3E',
         justifyContent: 'center',
         alignItems: 'center',
@@ -201,48 +118,34 @@ const style = StyleSheet.create({
         marginBottom: 20,
         height: 100
     },
-    salesButtonText: {
+    salesButtonText: { 
         color: '#F7F7F7',
         fontSize: 24
     },
-    salesButtonSmallText: {
+    salesButtonSmallText: { 
         color: '#F7F7F7',
         fontSize: 14
     },
-    categoryButtonContainer: {
-        backgroundColor: '#2A2C36',
-        flexDirection: 'row',
-        borderRadius: 8,
-        marginVertical: 7
+    categoryTextButtonContainer: { 
+         flexDirection: 'row', 
+         marginBottom:20 
     },
-    categoryTextButtonContainer: {
-        width: 200,
-        justifyContent: 'center',
-        paddingLeft: 30
-    },
-    categoryTextButton: {
+    categoryTextButton: { 
         color: '#F7F7F7',
         fontSize: 18,
-        fontWeight: '600'
+        fontWeight: '600',
+        marginLeft: 20,
     },
-    categoryImageButtonContainer: {
-        width: 200
+    categoryImageButtonContainer: { 
+        width: '50%', 
+        borderBottomRightRadius: 8,
+        borderTopRightRadius: 8
     },
-    categoryImageButton: {
-        width: 180,
-        paddingBottom: 0,
-        marginBottom: 0
-    },
-    bottomNavigationText: {
-        color: '#F7F7F7'
-    },
-    bottomNavigationContainer: {
-        flexDirection: 'row',
-        justifyContent: "space-around",
-        marginTop: 80
-    },
-    bottomNavigationContentAlign: {
-        justifyContent: 'center',
-        alignItems: 'center'
+    textContainer: { 
+        width: '50%', 
+        backgroundColor: '#2A2C36',
+        borderTopLeftRadius:8,
+        borderBottomLeftRadius:8, 
+        justifyContent: 'center'
     }
 });
