@@ -19,7 +19,6 @@ const headerStyle = StyleSheet.create({
         lineHeight: 34,
         color: '#F7F7F7',
         fontWeight: 'bold',
-        // paddingTop: 40,
         marginTop: 100
     }
 });

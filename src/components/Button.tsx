@@ -17,28 +17,26 @@ export const Button: React.FC<Props> = ({ title, onPress, outlined = false, size
         }
         return (
             <LinearGradient
-            colors={['#FF416C', '#FF4E50']}
-            locations={[0, 0.9]}
-            start={{ x: 0.2, y: 1 }} 
-            end={{ x: 1, y: 0 }}
-            style={[style.container, outlined ? style.outlined : style.filled]}  
+                colors={['#FF416C', '#FF4E50']}
+                locations={[0, 0.9]}
+                start={{ x: 0.2, y: 1 }}
+                end={{ x: 1, y: 0 }}
+                style={[style.container, outlined ? style.outlined : style.filled]}
             >
-            {node}
-        </LinearGradient >
+                {node}
+            </LinearGradient >
         );
     }
 
     return (
-
         <TouchableOpacity onPress={onPress} activeOpacity={0.85}>
-            {/* <LinearGradient
-                colors={['#FF416C', '#FF4E50']}
-                locations={[0, 0.9]}
-                start={{ x: 0.2, y: 1 }} end={{ x: 1, y: 0 }}
-                style={[style.container, outlined ? style.outlined : style.filled]}  >
-                <Text style={[style.text, size === 'sm' ? style.textSmall : style.textMedium]}>{title}</Text>
-            </LinearGradient > */}
-            {wrapLinearGradient(<Text style={[style.container, style.text, size === 'sm' ? style.textSmall : style.textMedium, outlined ? style.outlined : style.filled]}>{title}</Text>)}
+            {wrapLinearGradient(
+                <Text style={
+                    [style.container, style.text,
+                    size === 'sm' ? style.textSmall : style.textMedium,
+                    outlined ? style.outlined : style.filled]}>
+                    {title}
+                </Text>)}
         </TouchableOpacity>
     );
 };
@@ -55,20 +53,17 @@ const style = StyleSheet.create({
         lineHeight: 20,
     },
     filled: {
-        // backgroundColor: '#EF3651',
+
     },
     outlined: {
         borderColor: '#ABB4BD',
         borderWidth: 1.5,
-        // borderRadius: 25,
     },
     textSmall: {
         paddingVertical: 8
-        //imzeru nokonfiguresim, liekot view tagos vai citos, piemeram
     },
     textMedium: {
         paddingVertical: 14,
         textTransform: 'uppercase',
     }
 });
-// export default Button;

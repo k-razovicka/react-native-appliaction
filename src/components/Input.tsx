@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import { View, TextInput, Text, StyleSheet } from 'react-native'
-// import { useState } from '@storybook/addons'; ??
+import React, { useState } from 'react';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
 
 interface Props {
     label: string;
@@ -30,7 +29,7 @@ const style = StyleSheet.create({
     container: {
         backgroundColor: '#2A2C36',
         borderRadius: 4,
-        padding:15
+        padding: 15
     },
     text: {
         color: '#F5F5F5',
@@ -41,7 +40,7 @@ const style = StyleSheet.create({
     },
     label: {
         paddingTop: 8,
-        paddingLeft:10,
+        paddingLeft: 10,
         color: '#ABB4BD'
     }
 })

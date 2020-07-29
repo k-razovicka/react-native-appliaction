@@ -8,6 +8,5 @@ import './views/FindSimilarResults.stories';
 import './views/SummerSales.stories';
 import './views/Success.stories';
 import './views/Categories.stories';
-import './components/BottomNavigationBar.stories';
 import './views/MainPage.stories';
 import './views/WomensTops.stories';

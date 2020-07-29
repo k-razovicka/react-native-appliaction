@@ -7,15 +7,19 @@ interface FooterProps {
     title: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({title}) => {
+export const Footer: React.FC<FooterProps> = ({ title }) => {
     return (
         <View style={footerStyle.container}>
             <Text style={footerStyle.text}>{title}</Text>
             <View style={footerStyle.imageWrapper}>
-                <TouchableOpacity onPress={() => Linking.openURL('http://google.com')} style={footerStyle.imageContainer}>
-                   <GoogleIcon />
+                <TouchableOpacity
+                    onPress={() => Linking.openURL('http://google.com')}
+                    style={footerStyle.imageContainer}>
+                    <GoogleIcon />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => Linking.openURL('http://facebook.com')} style={footerStyle.imageContainer}>
+                <TouchableOpacity
+                    onPress={() => Linking.openURL('http://facebook.com')}
+                    style={footerStyle.imageContainer}>
                     <FacebookIcon />
                 </TouchableOpacity>
             </View>
