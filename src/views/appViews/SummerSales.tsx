@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, StatusBar, Text, Image, Alert, TouchableOpacity } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 interface CategoryProps {
     title: string;
@@ -78,6 +80,7 @@ export const SummerSales: React.FC<{ navigation: StackNavigationProp<any> }> = (
                     </View>
                 </View>
                 </ScrollView>
+                <Stack.Screen name="Sales" component={SummerSales} />
             </View>
         </>
     );
@@ -87,7 +90,7 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1E1F28',
-        paddingTop: 80,
+        paddingTop:20,
     },
     text: {
         color: '#F5F5F5',

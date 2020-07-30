@@ -3,7 +3,6 @@ import storybook from './storybook';
 import 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import SplashScreen from './src/views/utilityViews/SplashScreen';
-import { createStackNavigator } from '@react-navigation/stack';
 import OnboardingStack from './src/components/navigation/stack/onboarding/OnboardingStack';
 import { NavigationContainer } from '@react-navigation/native';
 import AppTabs from './src/components/navigation/tabs/app/AppTabs';
@@ -11,8 +10,6 @@ import AppTabs from './src/components/navigation/tabs/app/AppTabs';
 const IS_STORYBOOK = false;
 
 export const AuthContext = React.createContext(null);
-
-const Stack = createStackNavigator();
 
 const App: FC = () => {
     const [state, dispatch] = React.useReducer(

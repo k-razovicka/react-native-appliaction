@@ -44,7 +44,7 @@ export const MainPage: React.FC<AppNavigationProps<'Home'>> = ({ navigation }) =
                             }}
                         >
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('Sales')}
+                                onPress={() => navigation.navigate('Shop')}
                             >
                                 <Text style={style.textSummerSale}>
                                     Summer sale

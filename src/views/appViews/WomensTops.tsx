@@ -47,8 +47,6 @@ export const WomensTops: React.FC = () => {
             <StatusBar barStyle="light-content" />
             <View style={style.container}>
 
-                <Text style={style.categoryTitle}>Women's tops</Text>
-
                 <View style={style.filterContainer}>
                     <ScrollView horizontal={true} >
                         <Filter title='T-shirts' />
@@ -146,7 +144,7 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1E1F28',
-        paddingTop: 80,
+        paddingTop: 20,
     },
     categoryTitle: {
         color: '#F7F7F7',

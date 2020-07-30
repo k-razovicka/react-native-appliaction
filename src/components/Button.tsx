@@ -6,11 +6,10 @@ interface Props {
     title: string;
     onPress: () => void;
     outlined?: boolean;
-    size?: 'sm' | 'medium'
+    size?: 'sm' | 'medium';
 }
 
 export const Button: React.FC<Props> = ({ title, onPress, outlined = false, size = 'md' }) => {
-
     const wrapLinearGradient = (node: ReactNode): ReactNode => {
         if (outlined) {
             return node;
@@ -24,19 +23,24 @@ export const Button: React.FC<Props> = ({ title, onPress, outlined = false, size
                 style={[style.container, outlined ? style.outlined : style.filled]}
             >
                 {node}
-            </LinearGradient >
+            </LinearGradient>
         );
-    }
+    };
 
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.85}>
             {wrapLinearGradient(
-                <Text style={
-                    [style.container, style.text,
-                    size === 'sm' ? style.textSmall : style.textMedium,
-                    outlined ? style.outlined : style.filled]}>
+                <Text
+                    style={[
+                        style.container,
+                        style.text,
+                        size === 'sm' ? style.textSmall : style.textMedium,
+                        outlined ? style.outlined : style.filled,
+                    ]}
+                >
                     {title}
-                </Text>)}
+                </Text>,
+            )}
         </TouchableOpacity>
     );
 };
@@ -44,26 +48,24 @@ export const Button: React.FC<Props> = ({ title, onPress, outlined = false, size
 const style = StyleSheet.create({
     container: {
         borderRadius: 25,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     text: {
         color: '#F5F5F5',
-        textAlign: "center",
+        textAlign: 'center',
         fontSize: 14,
         lineHeight: 20,
     },
-    filled: {
-
-    },
+    filled: {},
     outlined: {
         borderColor: '#ABB4BD',
         borderWidth: 1.5,
     },
     textSmall: {
-        paddingVertical: 8
+        paddingVertical: 8,
     },
     textMedium: {
         paddingVertical: 14,
         textTransform: 'uppercase',
-    }
+    },
 });

@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StatusBar, ScrollView, StyleSheet, Alert } from 'react-native';
 import { Button } from '../../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 interface CategoryProps {
     title: string;
@@ -22,7 +24,6 @@ export const Categories: React.FC<{ navigation: StackNavigationProp<any> }> = ({
         <>
             <StatusBar barStyle="light-content" />
             <View style={style.container}>
-                <Text style={style.categoryTitle}>Categories</Text>
 
                 <View style={style.buttonContainer}>
                     <Button title="View All Items" onPress={() => Alert.alert('View all items')} />
@@ -32,7 +33,7 @@ export const Categories: React.FC<{ navigation: StackNavigationProp<any> }> = ({
 
                 <ScrollView>
                     <View>
-                        <TouchableOpacity onPress={() => navigation.navigate('Tops')}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Women's Tops")}>
                             <Category title="Tops" />
                         </TouchableOpacity>
                     </View>
@@ -50,7 +51,9 @@ export const Categories: React.FC<{ navigation: StackNavigationProp<any> }> = ({
                     <Category title="Hoodies" />
                     <Category title="Jumpsuits" />
                 </ScrollView>
+                <Stack.Screen name="Shop" component={Categories} />
             </View>
+           
         </>
     );
 }
@@ -59,7 +62,7 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1E1F28',
-        paddingTop: 80,
+        paddingTop: 20,
     },
     categoryTitle: {
         color: '#F7F7F7',
